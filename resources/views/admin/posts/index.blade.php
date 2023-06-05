@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-        <h1>Index Page</h1>
+        <div class="text-center pt-5 pb-5">
+            <h1>Laravel Projects</h1>
+        </div>
         @if (session()->has('message'))
             <div class="alert alert-danger">
                 {{ session()->get('message') }}
@@ -36,6 +38,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a class="btn btn-success" href="{{ route('admin.posts.create') }}">Crea un nuovo post!</a>
+        <a class="btn btn-outline-dark text-uppercase" href="{{ route('admin.posts.create') }}">create a new project</a>
+        {{ $posts->links('vendor.pagination.bootstrap-5') }}
     </div>
 @endsection
