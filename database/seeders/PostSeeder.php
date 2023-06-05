@@ -18,11 +18,13 @@ class PostSeeder extends Seeder
     {
         $posts = config('db-boolpress.posts');
         foreach($posts as $post)
-        $newPost = new Post();
-        $newPost->image = $post['image'];
-        $newPost->title = $post['title'];
-        $newPost->slug = Str::slug($post['title'], '-');
-        $newPost->body = $post['body'];
-        $newPost->save();
+        {
+            $newPost = new Post();
+            $newPost->image = $post['image'];
+            $newPost->title = $post['title'];
+            $newPost->slug = Str::slug($post['title'], '-');
+            $newPost->body = $post['body'];
+            $newPost->save();
+        }
     }
 }
