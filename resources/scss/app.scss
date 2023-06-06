@@ -9,4 +9,13 @@ $fa-font-path: "../fonts/webfonts" !default;
 
 body {
     font-family: 'Lora', serif;
+    background-color: $body_bg;
+}
+
+.table {
+    --bs-table-border-color: $dark_color;
+}
+
+.form-control {
+    border-color: $dark_color;
 }

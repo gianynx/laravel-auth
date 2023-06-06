@@ -9,6 +9,11 @@
         <div class="pt-5 pb-5">
             <h1>{{ $post->title }}</h1>
         </div>
+        @if (session()->has('message'))
+            <div class="alert alert-danger">
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <div class="mx-auto w-50">
             <img src="{{ $post->image }}" alt="{{ $post->title }}" class="w-100">
         </div>

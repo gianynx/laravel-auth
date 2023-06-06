@@ -6,26 +6,28 @@
 
 @section('content')
     <section class="container pt-5 pb-5">
-        <h1 class="pb-4">Edit this project: {{ $post['title'] }}</h1>
-        <form action="{{ route('admin.posts.update', ['post' => $post]) }}" method="POST">
+        <h1 class="pb-4"><span class="text-secondary">Edit this project:</span> {{ $post['title'] }}</h1>
+        <form action="{{ route('admin.posts.update', ['post' => $post]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="image" class="form-label fw-bold">Image URL</label>
-                <input type="url" class="form-control" name="image" id="image" aria-describedby="imageHelp"
-                    value="{{ $post['image'] }}" minlength="3" maxlength="200" required>
-                <div id="imageHelp" class="form-text">Insert a image URL!</div>
+                <label for="image" class="form-label fw-bold">Image</label>
+                <input type="file" class="form-control" name="image" id="image" aria-describedby="imageHelp"
+                    value="{{ old('image', $post['image']) }}">
+                <div id="imageHelp" class="form-text">Insert a image!</div>
             </div>
             <div class="mb-3">
                 <label for="title" class="form-label fw-bold">Title</label>
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="titleHelp"
-                    value="{{ $post['title'] }}" minlength="3" maxlength="200" required>
+                    value="{{ old('title', $post['title']) }}">
                 <div id="titleHelp" class="form-text">Insert a title!</div>
             </div>
             <div class="mb-3">
                 <label for="body" class="form-label fw-bold">Body</label>
                 <div>
-                    <textarea name="body" id="body" cols="193" rows="7" minlength="3" required></textarea>
+                    <textarea name="body" id="body" cols="193" rows="7">
+                        {{ old('body', $post['body']) }}
+                    </textarea>
                 </div>
             </div>
             <div class="pt-4">

@@ -14,25 +14,26 @@
                 {{ session()->get('message') }}
             </div>
         @endif
-        <table class="table table-dark table-striped">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col" class="px-5">ID</th>
+                    <th scope="col" class="px-5">Image</th>
+                    <th scope="col" class="px-5">Title</th>
+                    <th scope="col" class="px-5">Explore</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($posts as $post)
                     <tr>
                         <th scope="row"></th>
-                        <td>{{ $post->id }}</td>
-                        <td><img class="img-fluid w-25" src="{{ $post->image }}" alt="{{ $post->title }}"></td>
-                        <td class="fs-4">{{ $post->title }}</td>
+                        <td class="px-5">{{ $post->id }}</td>
+                        <td class="px-5"><img class="img-fluid w-25" src="{{ $post->image }}" alt="{{ $post->title }}">
+                        </td>
+                        <td class="fs-4 px-5">{{ $post->title }}</td>
                         <td>
-                            <div>
+                            <div class="px-5">
                                 <a href="{{ route('admin.posts.show', $post->slug) }}">
                                     <i class="fa-solid fa-eye fs-2"></i>
                                 </a>

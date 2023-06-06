@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -38,7 +40,13 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $formData = $request->validated();
+        $slug = Str::slug($request->title, '-');
+        $formData['slug'] = $slug;
+        $imgPath = Storage::put('uploads', $request->image);
+        $formData['image'] = asset('storage/' . $imgPath);
+        $post = Post::create($formData);
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
@@ -72,9 +80,11 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $form_data = $request->all();
-        $post->update($form_data);
-        return redirect()->route('posts.show', $post->id);
+        $formData = $request->validated();
+        $slug = Str::slug($request->title, '-');
+        $formData['slug'] = $slug;
+        $post->update($formData);
+        return redirect()->route('admin.posts.show', $post->slug)->with('message', 'The post has been updated successfully!');
     }
 
     /**
