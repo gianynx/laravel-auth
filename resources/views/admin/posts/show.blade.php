@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('page_title')
+    Laravel Project
+@endsection
+
 @section('content')
     <div class="container text-center">
         <div class="pt-5 pb-5">

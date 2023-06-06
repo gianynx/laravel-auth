@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('page_title')
+    Laravel Projects
+@endsection
+
 @section('content')
     <div class="container">
         <div class="text-center pt-5 pb-5">
@@ -25,12 +29,12 @@
                     <tr>
                         <th scope="row"></th>
                         <td>{{ $post->id }}</td>
-                        <td><img class="img-fluid w-50" src="{{ $post->image }}" alt="{{ $post->title }}"></td>
-                        <td>{{ $post->title }}</td>
+                        <td><img class="img-fluid w-25" src="{{ $post->image }}" alt="{{ $post->title }}"></td>
+                        <td class="fs-4">{{ $post->title }}</td>
                         <td>
                             <div>
                                 <a href="{{ route('admin.posts.show', $post->slug) }}">
-                                    <i class="fa-solid fa-eye"></i>
+                                    <i class="fa-solid fa-eye fs-2"></i>
                                 </a>
                             </div>
                         </td>
