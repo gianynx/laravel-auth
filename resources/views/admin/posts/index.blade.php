@@ -9,11 +9,14 @@
         <div class="text-center pt-5 pb-5">
             <h1>Laravel Projects</h1>
         </div>
+
+        {{-- Messaggio generato dal metodo with() --}}
         @if (session()->has('message'))
             <div class="alert alert-danger">
                 {{ session()->get('message') }}
             </div>
         @endif
+
         <table class="table table-striped">
             <thead>
                 <tr>
